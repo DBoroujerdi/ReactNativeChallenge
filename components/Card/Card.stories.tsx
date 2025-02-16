@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
-import { Text, View } from "react-native";
-import { Card } from "./Card";
+import { View } from "react-native";
+import { Card, CardData } from "./Card";
 
 const meta = {
   title: "Card",
@@ -19,8 +19,16 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
-  args: {
-    children: <Text>Hello</Text>,
+const data = {
+  from: new Date("2018-01-20T12:30Z"),
+  to: new Date("2018-01-20T13:00Z"),
+  intensity: {
+    forecast: 267,
+    actual: 265,
+    index: "high",
   },
+} satisfies CardData;
+
+export const Default: Story = {
+  args: { data },
 };
